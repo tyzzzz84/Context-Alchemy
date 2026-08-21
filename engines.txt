@@ -1,0 +1,34 @@
+CONTEXT ALCHEMY — I SETTE ENGINE ESTETICI
+=========================================
+
+Nota: proposta di nomenclatura e definizioni. Il repository non conteneva
+ancora una specifica degli engine; questo file la stabilisce come base.
+
+
+1. PRIMA MATERIA — Engine di ingestione grezza
+   Accoglie il materiale non raffinato (note, frammenti, fonti, rumore)
+   senza giudicarlo, preservandone la texture originale e la provenienza.
+
+2. CALCINATIO — Engine di riduzione
+   Brucia il superfluo e riduce il materiale alle sue ceneri essenziali,
+   eliminando ridondanze, ornamenti e digressioni senza carica semantica.
+
+3. SOLVE — Engine di dissoluzione
+   Scioglie i blocchi monolitici in unita atomiche mobili e ricombinabili,
+   liberando concetti e immagini dalla struttura che li teneva prigionieri.
+
+4. DISTILLATIO — Engine di distillazione
+   Separa per gradi di volatilita, isolando l'essenza ad alta densita
+   dal residuo, e converte il volume in concentrazione espressiva.
+
+5. CONIUNCTIO — Engine di fusione
+   Unisce elementi eterogenei e apparentemente incompatibili in una lega
+   nuova, generando risonanze che nessuna delle parti possedeva da sola.
+
+6. COAGULA — Engine di ricomposizione
+   Fa cristallizzare la materia sciolta in una forma stabile e leggibile,
+   imponendo ritmo, gerarchia e architettura al risultato della fusione.
+
+7. PROIECTIO — Engine di resa finale
+   Proietta l'opera compiuta nel medium di destinazione, calibrando tono,
+   registro e superficie estetica per chi la ricevera.
