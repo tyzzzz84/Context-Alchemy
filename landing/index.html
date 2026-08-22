@@ -87,6 +87,16 @@
 
   p:last-child { margin-bottom: 0; }
 
+  .lead {
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  .email {
+    margin-top: 2.25rem;
+    letter-spacing: 0.04em;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -168,7 +178,8 @@
     padding-top: 2rem;
     border-top: 1px solid var(--rule);
     font-size: 0.8rem;
-    letter-spacing: 0.08em;
+    font-style: italic;
+    letter-spacing: 0.04em;
     color: var(--muted);
     text-align: center;
   }
@@ -193,38 +204,42 @@
 
     <section id="about">
       <h2>About</h2>
-      <!-- TESTO SEZIONE: ABOUT -->
-      <p>Testo in arrivo.</p>
+      <p>Context Alchemy Labs researches the grammars that make generative AI produce non-generic output &mdash; and applies them to real client work.</p>
+      <p>Prompt engineering, made accessible.</p>
     </section>
 
     <section id="context-atelier">
       <h2>Context Atelier</h2>
-      <!-- TESTO SEZIONE: CONTEXT ATELIER -->
-      <p>Testo in arrivo.</p>
+      <p class="lead">Custom-calibrated aesthetic prompts for brands, events, and creators.</p>
+      <p>Most AI-generated visuals look the same &mdash; because most prompts are written generically. We rebuild yours through a structural grammar, so the output stops looking AI-made and starts looking like you.</p>
     </section>
 
     <section id="semantic-arbitrage">
       <h2>Semantic Arbitrage</h2>
-      <!-- TESTO SEZIONE: SEMANTIC ARBITRAGE -->
-      <p>Testo in arrivo.</p>
+      <p class="lead">Compressed semantic assets across text, image, and modalities under exploration.</p>
+      <p>Symbolic notation compresses the structure of prose. Three independent measurements &mdash; blind output comparison, attention entropy inside an open-weights transformer, and the model&rsquo;s own verbalised reasoning &mdash; point the same way: symbolic encoding sits closer to how these systems actually work than prose does.</p>
+      <p>Semantic Arbitrage is the applied stream that turns that principle into client-ready assets.</p>
     </section>
 
     <section id="evidence">
       <h2>Evidence</h2>
-      <!-- TESTO SEZIONE: EVIDENCE -->
-      <p>Testo in arrivo.</p>
+      <p>We audited 49 prompts from our own archive against the ratings they had already received.</p>
+      <p>One structural property predicted output quality: whether removing a single element would visibly collapse the composition. Length was controlled for &mdash; longer prompts did not score better. Neither did atmospheric consistency, once length was accounted for.</p>
+      <p>The rule was then tested forward. Three new images, in a register deliberately chosen outside our usual range, with the ranking registered <em>before</em> the images existed. The ranking held.</p>
+      <p>We don&rsquo;t sell the finding. We apply it.</p>
     </section>
 
     <section id="research">
       <h2>Research</h2>
-      <!-- TESTO SEZIONE: RESEARCH -->
-      <p>Testo in arrivo.</p>
+      <p class="lead">Ongoing inquiry into the architectures behind generative systems.</p>
+      <p>Selected papers and findings open-access. Work in progress on language compression, layered instance design, and the maieutic structure of multi-agent reasoning.</p>
     </section>
 
     <section id="work-with-us">
       <h2>Work With Us</h2>
-      <!-- TESTO SEZIONE: WORK WITH US -->
-      <p>Testo in arrivo.</p>
+      <p>Brands, events, creators, and anyone who needs generated visuals that don&rsquo;t look generated.</p>
+      <p>Tell us what you&rsquo;re building. We&rsquo;ll tell you whether we can help.</p>
+      <p class="email"><a href="mailto:cosmicnodes@proton.me">cosmicnodes@proton.me</a></p>
 
       <form name="contact" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contact">
@@ -251,7 +266,7 @@
   </main>
 
   <footer>
-    Context Alchemy Labs
+    Context Alchemy Labs &mdash; independent research. Sardinia.
   </footer>
 
 </div>
