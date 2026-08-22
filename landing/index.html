@@ -5,13 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Context Alchemy Labs</title>
 <meta name="description" content="A laboratory for semantic compression and generative aesthetics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #faf9f7;
-    --ink: #1c1b19;
-    --muted: #5c5a55;
-    --rule: #ddd9d2;
+    --bg: #12100e;
+    --ink: #e6e0d8;
+    --muted: #9a9186;
+    --accent: #b08d57;
+    --rule: #2b2723;
     --measure: 700px;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
 
   * { box-sizing: border-box; }
@@ -23,9 +29,10 @@
     padding: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 17px;
-    line-height: 1.75;
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -44,8 +51,9 @@
 
   h1 {
     margin: 0;
-    font-size: 1.55rem;
-    font-weight: normal;
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
     letter-spacing: 0.38em;
     text-indent: 0.38em; /* compensate trailing letter-space */
     line-height: 1.5;
@@ -53,15 +61,17 @@
 
   .subtitle {
     margin: 2.25rem 0 0;
+    font-family: var(--serif);
     font-style: italic;
-    font-size: 1.15rem;
+    font-size: 1.3rem;
+    line-height: 1.6;
     color: var(--muted);
   }
 
   .tagline {
     margin: 1rem 0 0;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
     color: var(--muted);
   }
 
@@ -73,11 +83,12 @@
 
   h2 {
     margin: 0 0 1.75rem;
-    font-size: 0.82rem;
-    font-weight: normal;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
     letter-spacing: 0.26em;
     text-indent: 0.26em;
-    color: var(--muted);
+    color: var(--accent);
     text-transform: uppercase;
   }
 
@@ -88,27 +99,57 @@
   p:last-child { margin-bottom: 0; }
 
   .lead {
+    font-family: var(--serif);
     font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.7;
     color: var(--muted);
   }
 
-  .email {
-    margin-top: 2.25rem;
-    letter-spacing: 0.04em;
-  }
+  em { font-style: italic; }
 
   a {
-    color: inherit;
+    color: var(--accent);
     text-decoration: none;
     border-bottom: 1px solid var(--rule);
   }
 
-  a:hover { border-bottom-color: var(--ink); }
+  a:hover { border-bottom-color: var(--accent); }
+
+  /* ---------- Evidence plates ---------- */
+
+  .plates {
+    display: flex;
+    gap: 1.25rem;
+    margin: 2.5rem 0 2.75rem;
+  }
+
+  .plates figure {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .plates img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+  }
+
+  .plates figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
 
   /* ---------- Form ---------- */
 
   form {
-    margin-top: 2.5rem;
+    margin-top: 3rem;
   }
 
   .field {
@@ -118,9 +159,9 @@
   label {
     display: block;
     margin-bottom: 0.6rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-    text-indent: 0.16em;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-indent: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
   }
@@ -136,6 +177,7 @@
     border-radius: 0;
     font-family: inherit;
     font-size: 1rem;
+    font-weight: 300;
     line-height: 1.6;
     color: var(--ink);
   }
@@ -148,26 +190,27 @@
   input:focus,
   textarea:focus {
     outline: none;
-    border-bottom-color: var(--ink);
+    border-bottom-color: var(--accent);
   }
 
   button {
     margin-top: 0.5rem;
-    padding: 0.75rem 2.25rem;
+    padding: 0.8rem 2.25rem;
     background: transparent;
-    border: 1px solid var(--ink);
+    border: 1px solid var(--accent);
     border-radius: 0;
     font-family: inherit;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
+    font-weight: 400;
     letter-spacing: 0.2em;
     text-indent: 0.2em;
     text-transform: uppercase;
-    color: var(--ink);
+    color: var(--accent);
     cursor: pointer;
   }
 
   button:hover {
-    background: var(--ink);
+    background: var(--accent);
     color: var(--bg);
   }
 
@@ -177,17 +220,19 @@
     margin-top: 6rem;
     padding-top: 2rem;
     border-top: 1px solid var(--rule);
-    font-size: 0.8rem;
+    font-family: var(--serif);
     font-style: italic;
-    letter-spacing: 0.04em;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
     color: var(--muted);
     text-align: center;
   }
 
   @media (max-width: 600px) {
     .page { padding: 4.5rem 1.4rem 5rem; }
-    h1 { font-size: 1.15rem; letter-spacing: 0.28em; text-indent: 0.28em; }
+    h1 { font-size: 1.35rem; letter-spacing: 0.28em; text-indent: 0.28em; }
     section { padding-top: 3.5rem; }
+    .plates { flex-direction: column; gap: 2rem; }
   }
 </style>
 </head>
@@ -224,6 +269,22 @@
     <section id="evidence">
       <h2>Evidence</h2>
       <p>We audited 49 prompts from our own archive against the ratings they had already received.</p>
+
+      <div class="plates">
+        <figure>
+          <img src="img/test-1.jpg" alt="Forward test image one">
+          <figcaption>Test 1 &middot; ranked first</figcaption>
+        </figure>
+        <figure>
+          <img src="img/test-2.jpg" alt="Forward test image two">
+          <figcaption>Test 2 &middot; ranked second</figcaption>
+        </figure>
+        <figure>
+          <img src="img/test-3.jpg" alt="Forward test image three">
+          <figcaption>Test 3 &middot; ranked third</figcaption>
+        </figure>
+      </div>
+
       <p>One structural property predicted output quality: whether removing a single element would visibly collapse the composition. Length was controlled for &mdash; longer prompts did not score better. Neither did atmospheric consistency, once length was accounted for.</p>
       <p>The rule was then tested forward. Three new images, in a register deliberately chosen outside our usual range, with the ranking registered <em>before</em> the images existed. The ranking held.</p>
       <p>We don&rsquo;t sell the finding. We apply it.</p>
@@ -239,7 +300,6 @@
       <h2>Work With Us</h2>
       <p>Brands, events, creators, and anyone who needs generated visuals that don&rsquo;t look generated.</p>
       <p>Tell us what you&rsquo;re building. We&rsquo;ll tell you whether we can help.</p>
-      <p class="email"><a href="mailto:cosmicnodes@proton.me">cosmicnodes@proton.me</a></p>
 
       <form name="contact" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="contact">
