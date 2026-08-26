@@ -27,7 +27,7 @@
   body {
     margin: 0;
     padding: 0;
-    background: var(--bg);
+    background-color: var(--bg);
     color: var(--ink);
     font-family: var(--sans);
     font-size: 16px;
@@ -36,7 +36,35 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Background texture: the photograph is knocked back to 8% over the dark
+     ground, then a further wash of that same colour settles it down so the
+     brightest parts of the image cannot lift the page under the text. */
+
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  body::before {
+    z-index: -2;
+    background-image: url("img/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: 0.08;
+  }
+
+  body::after {
+    z-index: -1;
+    background-color: rgba(18, 16, 14, 0.55);
+  }
+
   .page {
+    position: relative;
     max-width: var(--measure);
     margin: 0 auto;
     padding: 7rem 1.75rem 8rem;
@@ -57,6 +85,25 @@
     letter-spacing: 0.38em;
     text-indent: 0.38em; /* compensate trailing letter-space */
     line-height: 1.5;
+    color: var(--accent); /* fallback: flat gold */
+    background-image: linear-gradient(135deg, #c9a227 0%, #8a6d3b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  @supports ((background-clip: text) or (-webkit-background-clip: text)) {
+    h1 {
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .logo {
+    display: block;
+    width: 100%;
+    max-width: 90px;
+    height: auto;
+    margin: 2rem auto 0;
   }
 
   .subtitle {
@@ -241,6 +288,7 @@
 
   <header>
     <h1>CONTEXT ALCHEMY LABS</h1>
+    <img class="logo" src="img/logo.jpg" alt="Context Alchemy Labs emblem">
     <p class="subtitle">Where context becomes the substrate of meaning.</p>
     <p class="tagline">A laboratory for semantic compression and generative aesthetics.</p>
   </header>
