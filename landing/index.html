@@ -36,7 +36,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Background texture: the photograph is knocked back to 8% over the dark
+  /* Background texture: the photograph is knocked back to 12% over the dark
      ground, then a further wash of that same colour settles it down so the
      brightest parts of the image cannot lift the page under the text. */
 
@@ -55,12 +55,12 @@
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    opacity: 0.08;
+    opacity: 0.12;
   }
 
   body::after {
     z-index: -1;
-    background-color: rgba(18, 16, 14, 0.55);
+    background-color: rgba(18, 16, 14, 0.20);
   }
 
   .page {
