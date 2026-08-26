@@ -36,9 +36,16 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Background texture: the photograph is knocked back to 12% over the dark
-     ground, then a further wash of that same colour settles it down so the
-     brightest parts of the image cannot lift the page under the text.
+  /* Background texture. The photograph is mostly shadow (median luminance 37
+     of 255), so attenuating it evenly towards this near-black ground leaves
+     nothing to see. Instead it is lifted and carried at a higher opacity,
+     and the wash above it is a centred band: nearly solid behind the 700px
+     column of text, thin at the margins where the texture can be read
+     without anything sitting on top of it. The band is 1040px wide — its solid
+     part covers 800px, comfortably wider than the 756px the column occupies —
+     so on a
+     viewport narrower than that the page falls entirely under its solid
+     part and the text keeps the same ground it has on a wide screen.
      The layer is position: fixed, which pins it to the viewport on its own;
      background-attachment: fixed would add nothing here and breaks the
      painting of the image outright in Safari on iOS. */
@@ -57,12 +64,23 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    opacity: 0.12;
+    filter: brightness(1.6);
+    opacity: 0.3;
   }
 
   body::after {
     z-index: -1;
-    background-color: rgba(18, 16, 14, 0.20);
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(18, 16, 14, 0) 0,
+        rgba(18, 16, 14, 0.92) 120px,
+        rgba(18, 16, 14, 0.92) calc(100% - 120px),
+        rgba(18, 16, 14, 0) 100%),
+      linear-gradient(rgba(18, 16, 14, 0.1), rgba(18, 16, 14, 0.1));
+    background-position: center, center;
+    background-size: 1040px 100%, 100% 100%;
+    background-repeat: no-repeat, repeat;
   }
 
   .page {
