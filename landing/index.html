@@ -118,12 +118,20 @@
     }
   }
 
+  /* The emblem is a photograph on an opaque parchment field. Left as a
+     rectangle it reads as a picture pasted onto the page; cropped square and
+     rounded, the field becomes the ground of a seal and the carving sits at
+     its centre. The image itself is untouched — this is a crop, not a
+     knockout. */
+
   .logo {
     display: block;
-    width: 100%;
-    max-width: 90px;
-    height: auto;
-    margin: 2rem auto 0;
+    width: 104px;
+    height: 104px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid rgba(176, 141, 87, 0.55);
+    margin: 2.25rem auto 0;
   }
 
   .subtitle {
