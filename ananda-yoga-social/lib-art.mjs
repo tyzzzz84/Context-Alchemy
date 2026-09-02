@@ -1,195 +1,134 @@
-// Abstract, people-free artwork for each course panel. viewBox: 0 0 1080 600.
-const W = 1080, H = 600, CX = 540, CY = 300;
-const CREAM = '#F6F2E6';
-const rot = (deg, cx = CX, cy = CY) => `rotate(${deg} ${cx} ${cy})`;
-
-// vesica / lotus petal with its tip at (cx, cy-r)
-const petal = (cx, cy, r, k) =>
-  `M ${cx} ${cy - r} C ${cx + k} ${cy - r * 0.45} ${cx + k} ${cy - r * 0.1} ${cx} ${cy} C ${cx - k} ${cy - r * 0.1} ${cx - k} ${cy - r * 0.45} ${cx} ${cy - r} Z`;
-
-const bg = (p) => `<rect width="${W}" height="${H}" fill="${p.accent}"/>`;
+// Emblems for the course medallions: small, line-based, people-free.
+// Each returns inner SVG markup for viewBox "0 0 200 200".
+const C = 100;
 
 export const art = {
-  // Morning: a sun rising over the frame edge
+  // Morning: a sun clearing the horizon
   sunrise: (p) => {
     let rays = '';
-    for (let a = -108; a <= 108; a += 15) {
-      rays += `<rect x="533" y="235" width="14" height="82" rx="7" fill="${CREAM}" opacity="0.9" transform="${rot(a, 540, 520)}"/>`;
+    for (let a = -72; a <= 72; a += 24) {
+      rays += `<line x1="100" y1="70" x2="100" y2="52" transform="rotate(${a} 100 134)"/>`;
     }
-    return `${bg(p)}
-      <circle cx="540" cy="520" r="392" fill="${p.dark}" opacity="0.3"/>
-      <circle cx="540" cy="520" r="300" fill="${p.dark}" opacity="0.4"/>
+    return `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linecap="round">
+      <path d="M 66 134 A 34 34 0 0 1 134 134" fill="${p.mid}" stroke="none"/>
+      <path d="M 66 134 A 34 34 0 0 1 134 134"/>
       ${rays}
-      <circle cx="540" cy="520" r="178" fill="${CREAM}"/>
-      <circle cx="168" cy="118" r="16" fill="${CREAM}" opacity="0.75"/>
-      <circle cx="912" cy="96" r="24" fill="${CREAM}" opacity="0.6"/>
-      <circle cx="836" cy="180" r="11" fill="${CREAM}" opacity="0.8"/>`;
+      <line x1="44" y1="134" x2="156" y2="134"/>
+    </g>`;
   },
 
-  // Four-fold lotus, echoing the Ananda mark
+  // Four-fold lotus, after the Ananda mark
   mandala: (p) => {
-    let outer = '', inner = '', dots = '';
+    let g = '';
     for (let i = 0; i < 4; i++) {
-      outer += `<path d="${petal(CX, CY, 236, 138)}" fill="none" stroke="${CREAM}" stroke-width="10" transform="${rot(i * 90)}"/>`;
-      inner += `<path d="${petal(CX, CY, 142, 90)}" fill="${CREAM}" opacity="0.94" transform="${rot(45 + i * 90)}"/>`;
-      dots += `<circle cx="${CX}" cy="${CY - 208}" r="21" fill="${CREAM}" opacity="0.8" transform="${rot(45 + i * 90)}"/>`;
+      g += `<path d="M 100 34 C 136 70 136 88 100 106 C 64 88 64 70 100 34 Z" transform="rotate(${i * 90} 100 100)"/>`;
+      g += `<circle cx="100" cy="48" r="8" transform="rotate(${45 + i * 90} 100 100)"/>`;
     }
-    return `${bg(p)}
-      <circle cx="${CX}" cy="${CY}" r="256" fill="${p.dark}" opacity="0.38"/>
-      ${outer}${dots}${inner}
-      <circle cx="${CX}" cy="${CY}" r="38" fill="${p.deep}"/>
-      <circle cx="150" cy="128" r="52" fill="${CREAM}" opacity="0.3"/>
-      <circle cx="944" cy="470" r="66" fill="${CREAM}" opacity="0.26"/>`;
+    return `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linejoin="round">
+      ${g}
+      <circle cx="100" cy="100" r="11" fill="${p.accent}" stroke="none"/>
+    </g>`;
   },
+  // Vinyasa: one continuous line
+  flow: (p) => `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linecap="round">
+      <path d="M 42 74 C 62 50 82 98 102 74 C 122 50 142 98 158 74"/>
+      <path d="M 42 108 C 62 84 82 132 102 108 C 122 84 142 132 158 108"/>
+      <path d="M 42 142 C 62 118 82 166 102 142 C 122 118 142 166 158 142"/>
+    </g>`,
 
-  // Vinyasa: breath and movement in one continuous line
-  flow: (p) => {
-    const wave = (y, amp, sw, op, col) =>
-      `<path d="M -60 ${y} C 150 ${y - amp} 300 ${y + amp} 510 ${y} C 720 ${y - amp} 870 ${y + amp} 1140 ${y}" fill="none" stroke="${col}" stroke-width="${sw}" stroke-linecap="round" opacity="${op}"/>`;
-    return `${bg(p)}
-      ${wave(140, 84, 26, 0.32, p.dark)}
-      ${wave(212, 94, 32, 0.48, p.dark)}
-      ${wave(300, 104, 38, 1, CREAM)}
-      ${wave(390, 94, 26, 0.68, CREAM)}
-      ${wave(468, 80, 16, 0.4, CREAM)}
-      <circle cx="510" cy="300" r="28" fill="${p.deep}"/>`;
-  },
-
-  // Flow settling into stillness
-  ripple: (p) => {
-    let rings = '';
-    for (let r = 44; r <= 244; r += 40) {
-      rings += `<circle cx="762" cy="378" r="${r}" fill="none" stroke="${CREAM}" stroke-width="${r < 130 ? 13 : 8}" opacity="${1 - r / 340}"/>`;
-    }
-    return `${bg(p)}
-      <path d="M -60 190 C 130 96 280 288 470 200 C 620 132 730 232 900 168 C 1000 130 1080 156 1140 140" fill="none" stroke="${p.dark}" stroke-width="30" stroke-linecap="round" opacity="0.5"/>
-      <path d="M -60 258 C 130 164 280 356 470 268 C 620 200 730 300 900 236 C 1000 198 1080 224 1140 208" fill="none" stroke="${CREAM}" stroke-width="26" stroke-linecap="round"/>
-      ${rings}
-      <circle cx="762" cy="378" r="22" fill="${p.deep}"/>
-      <circle cx="232" cy="452" r="78" fill="${CREAM}" opacity="0.3"/>
-      <circle cx="368" cy="524" r="26" fill="${CREAM}" opacity="0.45"/>`;
-  },
-
-  // Alignment: square, triangle and circle on one axis
-  align: (p) => `${bg(p)}
-      <line x1="540" y1="34" x2="540" y2="566" stroke="${CREAM}" stroke-width="5" opacity="0.5" stroke-dasharray="18 16"/>
-      <line x1="70" y1="300" x2="1010" y2="300" stroke="${CREAM}" stroke-width="5" opacity="0.5" stroke-dasharray="18 16"/>
-      <rect x="140" y="180" width="240" height="240" rx="10" fill="none" stroke="${CREAM}" stroke-width="16"/>
-      <path d="M 540 150 L 686 424 L 394 424 Z" fill="${p.dark}" opacity="0.75" stroke="${CREAM}" stroke-width="14" stroke-linejoin="round"/>
-      <circle cx="826" cy="300" r="126" fill="${CREAM}"/>
-      <circle cx="826" cy="300" r="48" fill="${p.deep}"/>`,
-
-  // Soft nested arcs and leaves
-  gentle: (p) => {
-    let arcs = '';
-    const cols = [CREAM, p.dark, CREAM, p.deep];
-    for (let i = 0; i < 4; i++) {
-      const r = 306 - i * 64;
-      arcs += `<path d="M ${540 - r} 522 A ${r} ${r} 0 0 1 ${540 + r} 522" fill="none" stroke="${cols[i]}" stroke-width="42" opacity="${i % 2 ? 0.5 : 0.95}"/>`;
-    }
-    return `${bg(p)}
-      ${arcs}
-      <path d="M 168 452 C 168 344 252 280 358 280 C 358 388 274 452 168 452 Z" fill="${CREAM}" opacity="0.42"/>
-      <path d="M 912 452 C 912 344 828 280 722 280 C 722 388 806 452 912 452 Z" fill="${CREAM}" opacity="0.42"/>
-      <circle cx="540" cy="522" r="28" fill="${p.deep}"/>`;
-  },
+  // Movement settling into stillness
+  ripple: (p) => `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linecap="round">
+      <path d="M 44 62 C 62 40 82 84 104 62 C 124 42 142 72 158 58" stroke="${p.accent}"/>
+      <line x1="46" y1="108" x2="154" y2="108"/>
+      <line x1="60" y1="132" x2="140" y2="132"/>
+      <line x1="78" y1="156" x2="122" y2="156"/>
+    </g>`,
+  // Alignment: a posture built on an axis
+  align: (p) => `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+      <line x1="30" y1="100" x2="170" y2="100"/>
+      <rect x="46" y="46" width="108" height="108" rx="8" fill="${p.pale}"/>
+      <circle cx="100" cy="100" r="34"/>
+      <circle cx="100" cy="100" r="9" fill="${p.accent}" stroke="none"/>
+    </g>`,
+  // Soft nested arcs
+  gentle: (p) => `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linecap="round">
+      <path d="M 40 138 A 60 60 0 0 1 160 138"/>
+      <path d="M 62 138 A 38 38 0 0 1 138 138"/>
+      <path d="M 84 138 A 16 16 0 0 1 116 138" stroke="${p.accent}"/>
+      <line x1="40" y1="152" x2="160" y2="152"/>
+    </g>`,
 
   // Rhythm and strength
   strength: (p) => {
+    const hs = [30, 52, 72, 52, 30];
     let bars = '';
-    const hs = [140, 226, 306, 372, 306, 226, 140];
     hs.forEach((h, i) => {
-      const cream = i === 2 || i === 4;
-      bars += `<rect x="${222 + i * 94}" y="${512 - h}" width="56" height="${h}" rx="28" fill="${cream ? CREAM : p.dark}" opacity="${cream ? 0.95 : 0.6}"/>`;
+      bars += `<line x1="${52 + i * 24}" y1="142" x2="${52 + i * 24}" y2="${142 - h}" stroke="${i === 2 ? p.accent : p.dark}"/>`;
     });
-    return `${bg(p)}
-      <path d="M 130 512 A 420 420 0 0 1 950 512" fill="none" stroke="${CREAM}" stroke-width="14" opacity="0.45"/>
-      ${bars}
-      <rect x="70" y="506" width="940" height="14" rx="7" fill="${CREAM}"/>
-      <circle cx="168" cy="140" r="26" fill="${CREAM}" opacity="0.85"/>
-      <circle cx="924" cy="188" r="16" fill="${CREAM}" opacity="0.7"/>`;
+    return `<g fill="none" stroke="${p.dark}" stroke-width="12" stroke-linecap="round">${bars}</g>
+      <line x1="40" y1="156" x2="160" y2="156" stroke="${p.dark}" stroke-width="6" stroke-linecap="round"/>`;
   },
 
-  // A column stacked on a plumb line
+  // A column on a plumb line
   column: (p) => {
     let discs = '';
-    for (let i = 0; i < 8; i++) {
-      const w = 268 - i * 20, y = 72 + i * 58;
-      discs += `<rect x="${540 - w / 2}" y="${y}" width="${w}" height="38" rx="19" fill="${i % 2 ? CREAM : p.dark}" opacity="${i % 2 ? 1 : 0.7}"/>`;
+    for (let i = 0; i < 5; i++) {
+      const w = 76 - i * 8;
+      discs += `<line x1="${100 - w / 2}" y1="${58 + i * 22}" x2="${100 + w / 2}" y2="${58 + i * 22}" stroke="${i === 2 ? p.accent : p.dark}"/>`;
     }
-    return `${bg(p)}
-      <line x1="540" y1="24" x2="540" y2="576" stroke="${CREAM}" stroke-width="4" opacity="0.55"/>
-      <g opacity="0.45" stroke="${CREAM}" stroke-width="6">
-        <line x1="190" y1="110" x2="330" y2="110"/><line x1="750" y1="110" x2="890" y2="110"/>
-        <line x1="190" y1="490" x2="330" y2="490"/><line x1="750" y1="490" x2="890" y2="490"/>
-      </g>
-      ${discs}
-      <circle cx="540" cy="44" r="28" fill="${p.deep}"/>`;
+    return `<line x1="100" y1="40" x2="100" y2="164" stroke="${p.dark}" stroke-width="4" stroke-linecap="round"/>
+      <g fill="none" stroke="${p.dark}" stroke-width="12" stroke-linecap="round">${discs}</g>`;
   },
 
-  // A workbench of different shapes
-  lab: (p) => `${bg(p)}
-      <circle cx="196" cy="176" r="82" fill="${CREAM}"/>
-      <rect x="342" y="94" width="164" height="164" rx="14" fill="${p.dark}" opacity="0.78"/>
-      <path d="M 640 94 L 736 258 L 544 258 Z" fill="${CREAM}"/>
-      <path d="M 786 258 A 98 98 0 0 1 982 258 Z" fill="${p.deep}" opacity="0.85"/>
-      <path d="M 130 490 A 106 106 0 0 1 342 490" fill="none" stroke="${CREAM}" stroke-width="28"/>
-      <rect x="404" y="372" width="164" height="118" rx="59" fill="${CREAM}" opacity="0.62"/>
-      <g stroke="${CREAM}" stroke-width="22" stroke-linecap="round">
-        <line x1="676" y1="376" x2="676" y2="492"/><line x1="618" y1="434" x2="734" y2="434"/>
-      </g>
-      <circle cx="898" cy="434" r="62" fill="none" stroke="${CREAM}" stroke-width="22"/>`,
-
+  // A workbench of shapes
+  lab: (p) => `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linejoin="round">
+      <circle cx="62" cy="66" r="22"/>
+      <rect x="116" y="44" width="44" height="44" rx="5" fill="${p.mid}"/>
+      <path d="M 62 110 L 86 152 L 38 152 Z"/>
+      <path d="M 116 152 A 22 22 0 0 1 160 152 Z" fill="${p.pale}"/>
+    </g>`,
   // The breath, expanding
-  breath: (p) => {
-    let rings = '';
-    for (let r = 66; r <= 378; r += 52) {
-      rings += `<circle cx="${CX}" cy="${CY}" r="${r}" fill="none" stroke="${CREAM}" stroke-width="${r < 180 ? 15 : 9}" opacity="${0.95 - r / 520}"/>`;
-    }
-    return `${bg(p)}
-      <circle cx="${CX}" cy="${CY}" r="222" fill="${p.dark}" opacity="0.38"/>
-      ${rings}
-      <circle cx="${CX}" cy="${CY}" r="38" fill="${CREAM}"/>`;
-  },
+  breath: (p) => `<g fill="none" stroke="${p.dark}" stroke-width="6">
+      <circle cx="100" cy="100" r="62"/>
+      <circle cx="100" cy="100" r="42"/>
+      <circle cx="100" cy="100" r="22"/>
+      <circle cx="100" cy="100" r="8" fill="${p.accent}" stroke="none"/>
+    </g>`,
 
   // Night: a crescent and quiet stars
-  night: (p) => {
-    let dots = '';
-    const pts = [[196, 118, 9], [286, 214, 6], [156, 316, 7], [312, 424, 5], [900, 140, 8], [962, 286, 6], [846, 424, 9], [452, 84, 6], [676, 520, 7], [240, 520, 5]];
-    pts.forEach(([x, y, r]) => (dots += `<circle cx="${x}" cy="${y}" r="${r}" fill="${CREAM}" opacity="0.85"/>`));
-    return `${bg(p)}
-      <circle cx="${CX}" cy="${CY}" r="272" fill="${p.dark}" opacity="0.36"/>
-      <path d="M 626 90 A 210 210 0 1 0 626 510 A 256 256 0 1 1 626 90 Z" fill="${CREAM}"/>
-      ${dots}`;
-  },
+  night: (p) => `<path d="M 122 44 A 56 56 0 1 0 122 156 A 68 68 0 1 1 122 44 Z" fill="${p.mid}" stroke="${p.dark}" stroke-width="6" stroke-linejoin="round"/>
+      <g fill="${p.dark}">
+        <circle cx="140" cy="66" r="5"/><circle cx="152" cy="104" r="4"/><circle cx="134" cy="136" r="6"/>
+      </g>`,
 
   // A personal sequence, step by step
   sequence: (p) => {
     let g = '';
-    for (let i = 0; i < 5; i++) {
-      const cx = 190 + i * 175, done = i < 3;
-      g += `<circle cx="${cx}" cy="${CY}" r="72" fill="none" stroke="${CREAM}" stroke-width="15" opacity="${done ? 1 : 0.42}"/>`;
-      g += done
-        ? `<circle cx="${cx}" cy="${CY}" r="32" fill="${CREAM}"/>`
-        : `<path d="M ${cx - 32} ${CY} A 32 32 0 0 1 ${cx + 32} ${CY}" fill="none" stroke="${CREAM}" stroke-width="15" opacity="0.6"/>`;
-      if (i < 4) g += `<line x1="${cx + 84}" y1="${CY}" x2="${cx + 166}" y2="${CY}" stroke="${CREAM}" stroke-width="6" opacity="0.45" stroke-dasharray="12 12"/>`;
+    for (let i = 0; i < 4; i++) {
+      const cx = 46 + i * 36;
+      g += `<circle cx="${cx}" cy="100" r="15" fill="${i < 2 ? p.mid : 'none'}"/>`;
+      if (i < 3) g += `<line x1="${cx + 21}" y1="100" x2="${cx + 15 + 6}" y2="100"/>`;
     }
-    return `${bg(p)}
-      <rect x="0" y="120" width="${W}" height="360" fill="${p.dark}" opacity="0.26"/>
-      ${g}
-      <rect x="70" y="514" width="940" height="10" rx="5" fill="${CREAM}" opacity="0.5"/>`;
+    return `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linecap="round">${g}
+      <line x1="40" y1="140" x2="160" y2="140" stroke-width="4"/>
+    </g>`;
   },
 
-  // Inversions, arm balances, diagonals
-  advanced: (p) => `${bg(p)}
-      <g stroke="${p.dark}" stroke-width="36" opacity="0.5" stroke-linecap="round">
-        <line x1="70" y1="560" x2="470" y2="90"/><line x1="256" y1="560" x2="656" y2="90"/>
-      </g>
-      <path d="M 700 118 L 946 118 L 823 352 Z" fill="none" stroke="${CREAM}" stroke-width="18" stroke-linejoin="round"/>
-      <circle cx="823" cy="432" r="62" fill="${CREAM}"/>
-      <path d="M 356 470 A 214 214 0 0 1 784 470" fill="none" stroke="${CREAM}" stroke-width="16" opacity="0.72"/>
-      <rect x="70" y="506" width="940" height="12" rx="6" fill="${CREAM}"/>
-      <circle cx="528" cy="196" r="50" fill="${CREAM}" opacity="0.9"/>`,
+  // Inversions and arm balances
+  advanced: (p) => `<g fill="none" stroke="${p.dark}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M 54 50 L 146 50 L 100 130 Z" fill="${p.mid}"/>
+      <circle cx="100" cy="146" r="11" fill="${p.accent}" stroke="none"/>
+      <line x1="46" y1="168" x2="154" y2="168"/>
+    </g>`,
+  // The mark itself, for the cover and the academy divider
+  emblem: (p) => {
+    let g = '';
+    for (let i = 0; i < 4; i++) {
+      g += `<path d="M 100 30 C 132 68 132 86 100 104 C 68 86 68 68 100 30 Z" transform="rotate(${i * 90} 100 100)"/>`;
+      g += `<circle cx="100" cy="46" r="9" transform="rotate(${45 + i * 90} 100 100)"/>`;
+    }
+    return `<g fill="none" stroke="${p.dark}" stroke-width="5" stroke-linejoin="round">${g}
+      <circle cx="${C}" cy="${C}" r="10" fill="${p.accent}" stroke="none"/>
+    </g>`;
+  },
 };
-
-export { CREAM };

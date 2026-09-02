@@ -32,4 +32,5 @@ export const palette = (H) => ({
   dark: oklch(0.545, 0.155, H),
   soft: oklch(0.935, 0.05, H),
   mid: oklch(0.86, 0.09, H),
+  pale: oklch(0.966, 0.028, H),
 });

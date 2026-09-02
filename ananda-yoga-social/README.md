@@ -27,11 +27,18 @@ for f in preview/*.html; do
 done
 ```
 
+## Stile
+
+Impaginazione editoriale: fondo avorio, illustrazione ridotta a medaglione,
+titolo grande, colore concentrato nel medaglione e negli accenti.
+
 ## Tipografia
 
-Il font richiesto è Gotham, che è proprietario e non ridistribuibile: le tavole
-usano Montserrat (geometrico, stessa famiglia di forme, è anche il font del
-logo) con fallback su Avenir Next / Century Gothic / Futura.
+Lovelo (display) sui titoli, dichiarato per primo nello stack: non è
+distribuibile e non può essere incorporato, quindi rende dove è installato e
+altrove ricade su Montserrat. I testi lunghi usano sempre Montserrat, che è
+anche la famiglia del logo. Gotham, richiesto in origine, è proprietario e non
+utilizzabile qui.
 
 ## Nota sugli orari
 
