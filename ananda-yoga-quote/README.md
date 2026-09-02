@@ -25,8 +25,8 @@ filetti sottili, un colore per slide.
 node build.mjs && node render.mjs
 ```
 
-## Refusi tenuti come nell'originale
+## Correzioni rispetto all'originale
 
-Nel materiale di partenza compaiono «PER CHI E' IDEALE» (apostrofo al posto
-dell'accento) e «Corso avanzata di vinyasa». Sono stati riportati identici:
-vanno corretti in `build.mjs` se si vuole sistemarli.
+Due refusi del materiale di partenza sono stati corretti su richiesta:
+«PER CHI E' IDEALE» → «PER CHI È IDEALE» (tre slide) e «Corso avanzata di
+vinyasa» → «Corso avanzato di vinyasa». Tutto il resto è ripreso alla lettera.

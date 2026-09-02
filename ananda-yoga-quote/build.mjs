@@ -107,7 +107,7 @@ const slides = [
     file: 'Mensili', hue: 150, art: 'sequence', size: 62,
     title: 'Percorsi mensili',
     sub: 'La continuità per radicare la tua pratica',
-    panelTitle: 'Per chi e’ ideale il percorso mensile?',
+    panelTitle: 'Per chi è ideale il percorso mensile?',
     panelBullets: [
       'Costanza e risultati: perfetto per chi desidera stabilire uno o più appuntamenti settimanali per consolidare i benefici della pratica',
       'Nessuno stress da impegni: ideale per chi vuole assicurare il proprio posto a lezione, ma apprezza la possibilità di recuperare eventuali assenze in altri corsi',
@@ -126,7 +126,7 @@ const slides = [
     file: 'Liberi', hue: 30, art: 'lab', size: 62,
     title: 'Percorsi liberi',
     sub: 'Soluzioni su misura per una totale flessibilità',
-    panelTitle: 'Per chi e’ ideale il percorso libero?',
+    panelTitle: 'Per chi è ideale il percorso libero?',
     panelBullets: [
       'Professionisti con orari flessibili, turnisti o trasfertisti che necessitano di gestire la propria presenza in totale libertà',
       'Per chi vuole integrare la pratica dello Yoga con altri sport senza la pressione di una scadenza mensile',
@@ -142,14 +142,14 @@ const slides = [
     file: 'Accademia', hue: 175, art: 'advanced', size: 54,
     title: 'Percorsi Accademia',
     sub: 'Pratica intensiva e percorsi di approfondimento',
-    panelTitle: 'Per chi e’ ideale il percorso Accademia?',
+    panelTitle: 'Per chi è ideale il percorso Accademia?',
     panelBullets: [
       'Praticanti dedicati ed esperti che cercano una pratica quotidiana strutturata, focalizzata sull’autonomia, sull’auto-osservazione e sulla progressione individuale guidata passo dopo passo dall’insegnante',
       'Praticanti esperti che vogliono perfezionare la precisione dell’allineamento ed esplorare asana e transizioni sfidanti in lezioni intense e dinamiche',
     ],
     cards: [
       { name: 'Mysore', prices: ['€90 al mese (bis)'], notes: ['Pratica personalizzata in classe di gruppo', 'Sviluppo di una forte autodisciplina personale', 'Ingressi extra a lezioni del palinsesto: €7'] },
-      { name: 'DYP Advanced', prices: ['€80 al mese (bis)', '€100 al mese (tris)'], notes: ['Corso avanzata di vinyasa con Mysore e laboratori su verticalismo, arm balance e archi', 'Ingressi extra a lezioni del palinsesto: €7'] },
+      { name: 'DYP Advanced', prices: ['€80 al mese (bis)', '€100 al mese (tris)'], notes: ['Corso avanzato di vinyasa con Mysore e laboratori su verticalismo, arm balance e archi', 'Ingressi extra a lezioni del palinsesto: €7'] },
     ],
   },
 ];
