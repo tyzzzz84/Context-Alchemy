@@ -1,0 +1,119 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Risveglio.dc.html",
+      "x": 1240,
+      "y": 0,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "DynamicBase.dc.html",
+      "x": 2480,
+      "y": 0,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "FlowToYin.dc.html",
+      "x": 3720,
+      "y": 0,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "YogaDolce.dc.html",
+      "x": 0,
+      "y": 1300,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "YogaFit.dc.html",
+      "x": 1240,
+      "y": 1300,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "YogaPosturale.dc.html",
+      "x": 2480,
+      "y": 1300,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Hatha.dc.html",
+      "x": 3720,
+      "y": 1300,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "AnandaYoga.dc.html",
+      "x": 0,
+      "y": 2600,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "YogaLab.dc.html",
+      "x": 1240,
+      "y": 2600,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Meditazione.dc.html",
+      "x": 2480,
+      "y": 2600,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "YinNidra.dc.html",
+      "x": 3720,
+      "y": 2600,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Accademia.dc.html",
+      "x": 0,
+      "y": 3900,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Mysore.dc.html",
+      "x": 1240,
+      "y": 3900,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "DypAdvanced.dc.html",
+      "x": 2480,
+      "y": 3900,
+      "w": 1080,
+      "h": 1080
+    },
+    {
+      "file": "Palinsesto.dc.html",
+      "x": 3720,
+      "y": 3900,
+      "w": 1080,
+      "h": 1080
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}
