@@ -13,6 +13,8 @@ scrivere su WhatsApp.
 - `lib-art.mjs` — illustrazioni astratte in SVG (nessuna persona), una per corso
 - `render.mjs` — genera pagine statiche in `preview/` per l'esportazione
 - `png/` — le sedici slide esportate in PNG 1080×1080
+- `ananda-corsi-slide.html` — le sedici slide in un unico file, una pagina ciascuna,
+  per la stampa in PDF e per l'importazione in Canva
 - `ananda-logo.jpg` — logo Ananda Yoga Cagliari
 
 ## Rigenerare
